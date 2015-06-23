@@ -21,7 +21,7 @@ Linux Server Configuration
 52.26.76.149
 
 ## WEB APP ADDRESS
-http://52.26.76.149/catalog/
+http://ec2-52-26-76-149.us-west-2.compute.amazonaws.com/catalog/
 
 ## SSH PORT
 2200 
@@ -59,8 +59,10 @@ http://52.26.76.149/catalog/
 > ssh grader@52.26.76.149
 
 # as the grader user
-# update packages (5.)
+# update list of packages
 > sudo apt-get update
+# download package updates (5.)
+> sudo apt-get upgrade 
 
 # change SSH port to 2200 (6.)
 > sudo nano /etc/ssh/sshd_config
@@ -156,7 +158,7 @@ local   all             all                                     md5
 # creating VirtualHost
 > sudo nano /etc/apache2/sites-available/catalog.conf 
 <VirtualHost *:80>
-                ServerName 52.26.76.149
+                ServerName ec2-52-26-76-149.us-west-2.compute.amazonaws.com
                 ServerAdmin admin@mywebsite.com
                 WSGIScriptAlias / /var/www/catalog/app.wsgi
                 <Directory /var/www/catalog/app/>
